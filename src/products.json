@@ -1,0 +1,5 @@
+{
+  "name": ["Americano", "Aren Latte", "Vanilla Latte", "Pandan Latte", "Taro Latte", "Rum Coffee", "Dolce Coffee", "Mochacino", "Creamy Matcha", "Cookies N Cream", "Taro Frappé", "Choco Signature", "Brown Sugar MT", "Mango Tea"],
+  "color": ["brown", "brown", "grey", "green", "purple", "brown", "brown", "brown", "green", "grey", "purple", "brown", "brown", "yellow"],
+  "id":["americano", "aren", "vanilla", "pandan", "taro", "rum", "dolce", "mocha", "matcha", "cookie", "taro", "choco", "milktea", "mango"]
+}
