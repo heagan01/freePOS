@@ -1,6 +1,5 @@
 body {
   margin: 0;
-  font-family: 'Arial-rounded', sans-serif;
 }
 
 .blob {
@@ -68,6 +67,7 @@ body {
 .products {
   height: 100vh;
   width: 60%;
+  font-family: 'Arial-rounded', sans-serif;
   float: right;
 }
 
