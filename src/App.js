@@ -166,7 +166,7 @@ class signUpDialog extends React.Component {
       <div className="preview">
         ----------------------
         <br />
-        <pre>Selera Ngopi</pre>
+        <pre>     Selera Ngopi</pre>
         ----------------------
         <br />
         {/* this too is the most unefficient code I've ever written */}
@@ -225,8 +225,7 @@ class signUpDialog extends React.Component {
         </pre>
         <pre>{this.state.am500.aren != 0 && <br />}</pre>
         <pre>
-          {(this.state.am250.aren != 0) |
-            (this.state.am500.aren != 0) && <br />}
+          {this.state.am500.aren != 0&& <br />}
         </pre>
         <pre>
           {this.state.am250.vanilla != 0 &&
@@ -427,7 +426,7 @@ class signUpDialog extends React.Component {
           </pre>
           <pre>{this.state.am500.mango != 0 && <br />}</pre>
           <pre>{this.state.discount != 0 && "DISCOUNT       " + nf.format(this.state.discount)}</pre>
-        <pre>{this.state != 0 && "TOTAL	         " + nf.format(this.state.price)}</pre>
+        <pre>{this.state != 0 && "TOTAL	       " + nf.format(this.state.price)}</pre>
       </pre></div>,
     ];
   }
