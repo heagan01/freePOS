@@ -1,12 +1,17 @@
 body {
   margin: 0;
+  height: 100%;
+  background-image: url('background.jpg')
 }
 
-.blob {
-  height: 75px;
-  width: 75px;
+.separator {
+  height: 95vh;
   position: absolute;
-  margin-left: 95%;
+  width: 1vh;
+  margin-left: 33%;
+  margin-top: 10px;
+  border-radius: 10px;
+  background: #fff;
 }
 
 .path {
@@ -28,12 +33,12 @@ body {
   margin-top: 15px;
   height: 100px;
   display: inline-block;
-  border: 2px solid #000;
+  border: 2px solid #fff;
   border-radius: 5px;
   transition: 0.5s;
   line-height: 50px;
   text-align: center;
-  color: #000;
+  color: #fff;
   cursor: pointer;
   position: relative;
 }
@@ -75,35 +80,35 @@ body {
   width: 39.5%;
   position: fixed;
   height: 100vh;
-  border: solid 2px #000;
+  color: #fff;
 }
 
 .green:hover {
-  box-shadow: 0px 0px 35px 0px rgba(59,255,0,0.75);
-  -webkit-box-shadow: 0px 0px 35px 0px rgba(59,255,0,0.75);
-  -moz-box-shadow: 0px 0px 35px 0px rgba(59,255,0,0.75);
-  color: rgba(59,255,0,0.75);
+  box-shadow: 0px 0px 35px 0px #C5DCA0;
+  -webkit-box-shadow: 0px 0px 35px 0px #C5DCA0;
+  -moz-box-shadow: 0px 0px 35px 0px #C5DCA0;
+  color: #C5DCA0;
 }
 
 .purple:hover {
-  color: rgba(186,0,255,0.75);
-  box-shadow: 0px 0px 35px 0px rgba(186,0,255,0.75);
-  -webkit-box-shadow: 0px 0px 35px 0px rgba(186,0,255,0.75);
-  -moz-box-shadow: 0px 0px 35px 0px rgba(186,0,255,0.75);
+  color: #E54F6D;
+  box-shadow: 0px 0px 35px 0px #E54F6D;
+  -webkit-box-shadow: 0px 0px 35px 0px #E54F6D;
+  -moz-box-shadow: 0px 0px 35px 0px #E54F6D;
 }
 
 .grey:hover {
-  color: rgba(124,124,124,0.75);
-  box-shadow: 0px 0px 35px 0px rgba(124,124,124,0.75);
--webkit-box-shadow: 0px 0px 35px 0px rgba(124,124,124,0.75);
--moz-box-shadow: 0px 0px 35px 0px rgba(124,124,124,0.75);
+  color: #757575;
+  box-shadow: 0px 0px 35px 0px #757575;
+-webkit-box-shadow: 0px 0px 35px 0px #757575;
+-moz-box-shadow: 0px 0px 35px 0px #757575;
 }
 
 .brown:hover {
-  color: rgba(53,9,9,0.75);
-  box-shadow: 0px 0px 35px 0px rgba(53,9,9,0.75);
--webkit-box-shadow: 0px 0px 35px 0px rgba(53,9,9,0.75);
--moz-box-shadow: 0px 0px 35px 0px rgba(53,9,9,0.75);
+  color: #DC9E82;
+  box-shadow: 0px 0px 35px 0px #DC9E82;
+-webkit-box-shadow: 0px 0px 35px 0px #DC9E82;
+-moz-box-shadow: 0px 0px 35px 0px #DC9E82;
 }
 
 .yellow:hover {

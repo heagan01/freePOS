@@ -146,6 +146,7 @@ class signUpDialog extends React.Component {
 
   render() {
     return [
+      <div className='separator'></div>,
       <div className="products">
         <div className="gray item">
           <h1>discount</h1>
@@ -428,19 +429,6 @@ class signUpDialog extends React.Component {
           <pre>{this.state.discount != 0 && "DISCOUNT       " + nf.format(this.state.discount)}</pre>
         <pre>{this.state != 0 && "TOTAL	         " + nf.format(this.state.price)}</pre>
       </pre></div>,
-
-      <svg
-        viewBox="0 0 200 200"
-        className="blob"
-        xmlns="http://www.w3.org/2000/svg"
-      >
-        <path
-          className="path"
-          fill="#fF0066"
-          d="m36.3,-52.6C45.5,-43.3,50.3,-30.6,56.7,-17C63.1,-3.4,71,11.1,69.8,25C68.5,38.9,58,52.1,44.8,56.4C31.6,60.6,15.8,56,2.1,53.1C-11.6,50.1,-23.1,48.9,-37.2,44.9C-51.2,40.9,-67.8,34.2,-73.9,22.4C-80.1,10.5,-75.7,-6.3,-69.8,-22C-63.8,-37.7,-56.1,-52.2,-44.2,-60.7C-32.3,-69.1,-16.2,-71.5,-1.3,-69.7C13.5,-67.9,27.1,-61.9,36.3,-52.6Z"
-          transform="translate(100 100)"
-        />
-      </svg>,
     ];
   }
 
