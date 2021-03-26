@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import "./App.css";
 
 // let matcha = 0;
@@ -15,8 +15,7 @@ import "./App.css";
 //   rum: 0,
 //   mocha: 0,
 // };
-
-// function Item(props) {
+// function item(props) {
 //   return [
 //     <div className={props.color + ' item'}  onClick={() => setMatcha((item) => item + 1)}><h1>{props.name}</h1></div>
 //   ]
@@ -42,20 +41,19 @@ let price = 0
 var nf = new Intl.NumberFormat();
 
 const data250ml = [
-    { color: "brown", name: "Americano", id: "americano", price: 18000 },
+  { color: "brown", name: "Americano", id: "americano", price: 18000 },
     { color: "grey", name: "Cookies n Cream", id: "cookie", price: 18000 },
-    { color: "brown", name: "Aren Latte", id: "aren", price: 18000 },
-    { color: "grey", name: "Vanilla Latte", id: "vanilla", price: 18000 },
-    { color: "green", name: "Pandan Latte", id: "pandan", price: 18000 },
-    { color: "purple", name: "Taro Latte", id: "taro", price: 18000 },
-    { color: "brown", name: "Rum Coffee", id: "rum", price: 18000 },
-    { color: "brown", name: "Dolce Coffee", id: "dolce", price: 18000 },
-    { color: "brown", name: "Mochacino", id: "mocha", price: 18000 },
-    { color: "green", name: "Creamy Matcha", id: "matcha", price: 18000 },
-    { color: "purple", name: "Taro Frappé", id: "taro", price: 18000 },
-    { color: "brown", name: "Choco Signature", id: "choco", price: 18000 },
-    { color: "brown", name: "Brown Sugar MT", id: "milktea", price: 18000 },
-    { color: "yellow", name: "Mango Tea", id: "mango", price: 12000},
+  { color: "brown", name: "Aren Latte", id: "aren", price: 18000 },
+  { color: "green", name: "Pandan Latte", id: "pandan", price: 18000 },
+  { color: "purple", name: "Taro Latte", id: "taro", price: 18000 },
+  { color: "brown", name: "Rum Coffee", id: "rum", price: 18000 },
+  { color: "brown", name: "Dolce Coffee", id: "dolce", price: 18000 },
+  { color: "brown", name: "Mochacino", id: "mocha", price: 18000 },
+  { color: "green", name: "Creamy Matcha", id: "matcha", price: 18000 },
+  { color: "purple", name: "Taro Frappé", id: "taro", price: 18000 },
+  { color: "brown", name: "Choco Signature", id: "choco", price: 18000 },
+  { color: "brown", name: "Brown Sugar MT", id: "milktea", price: 18000 },
+  { color: "yellow", name: "Mango tea", id: "mango", price: 12000},
   ];
 
 const data500ml = [
@@ -71,7 +69,7 @@ const data500ml = [
   { color: "purple", name: "Taro Frappé", id: "taro", price: 35000 },
   { color: "brown", name: "Choco Signature", id: "choco", price: 35000 },
   { color: "brown", name: "Brown Sugar MT", id: "milktea", price: 35000 },
-  { color: "yellow", name: "Mango Tea", id: "mango", price: 20000},
+  { color: "yellow", name: "Mango tea", id: "mango", price: 20000},
 ]
 
 function Item(props) {
@@ -99,12 +97,12 @@ function Item(props) {
   );
 }
 
-class SignUpDialog extends React.Component {
+class signUpDialog extends React.Component {
   constructor(eprops) {
     super(eprops);
     this.calculate = this.calculateR.bind(this);
     this.price = 0;
-    // This may be the most inefficient code I've ever written
+    // this may be the most inefficient code I've ever written
     this.addItem = this.addItem.bind(this);
     this.state = {
       am250: {
@@ -150,12 +148,13 @@ class SignUpDialog extends React.Component {
     return [
       <div className="products">
         <div className="gray item">
-          <h1>Discount</h1>
+          <h1>discount</h1>
           <input
             className="input250ml"
-            id="Discount"
+            id="discount"
+            type='number'
             onChange={this.addItem}
-            placeholder="Discount"
+            placeholder="discount"
           ></input>
         </div>
 
@@ -166,10 +165,10 @@ class SignUpDialog extends React.Component {
       <div className="preview">
         ----------------------
         <br />
-        <pre> Selera Ngopi</pre>
+        <pre>Selera Ngopi</pre>
         ----------------------
         <br />
-        {/* This too is the most unefficient code I've ever written */}
+        {/* this too is the most unefficient code I've ever written */}
         <pre>
           {this.state.am250.americano != 0 &&
             this.state.am250.americano + "x  Americano"}
@@ -190,7 +189,7 @@ class SignUpDialog extends React.Component {
         {this.state.am500.americano != 0 && <br />}
         <pre>
           {this.state.am250.cookie != 0 &&
-            this.state.am250.cookie + "x  Cookies & Cream"}
+            this.state.am250.cookie + "x  Cookies & cream"}
         </pre>
         <pre>
           {this.state.am250.cookie != 0 &&
@@ -199,11 +198,11 @@ class SignUpDialog extends React.Component {
         <pre>{this.state.am250.cookie != 0 && <br />}</pre>
         <pre>
           {this.state.am500.cookie != 0 &&
-            this.state.am500.cookie + "x  Cookies N Cream"}
+            this.state.am500.cookie + "x  Cookies & cream"}
         </pre>
         <pre>
           {this.state.am500.cookie != 0 &&
-            "500ml          " + nf.format(this.state.am500.cookie * 18000)}
+            "500ml          " + nf.format(this.state.am500.cookie * 35000)}
         </pre>
         <pre>{this.state.am500.cookie != 0 && <br />}</pre>
         <pre>
@@ -237,6 +236,10 @@ class SignUpDialog extends React.Component {
             "250ml          " + nf.format(this.state.am250.vanilla * 18000)}
         </pre>
         <pre>{this.state.am250.vanilla != 0 && <br />}</pre>
+        <pre>{this.state.am500.vanilla != 0 &&
+          "500ml          " + nf.format(this.state.am500.vanilla * 35000)}
+      </pre>
+      {this.state.am500.vanilla != 0 && <br />}
         <pre>
           {this.state.am250.pandan != 0 &&
             this.state.am250.pandan + "x  Pandan Latte"}
@@ -247,6 +250,17 @@ class SignUpDialog extends React.Component {
         </pre>
         <pre>{this.state.am250.pandan != 0 && <br />}</pre>
         <pre>
+          <pre>
+            {this.state.am500.pandan != 0 &&
+              this.state.am500.pandan + "x  Pandan Latte"}
+          </pre>
+          <pre>
+            {this.state.am500.pandan != 0 &&
+              "500ml          " + nf.format(this.state.am500.pandan * 18000)}
+          </pre>
+            <pre>{this.state.am500.pandan != 0 && <br />}</pre>
+          </pre>
+        <pre>
           {this.state.am250.taroL != 0 &&
             this.state.am250.taroL + "x  Taro Latte"}
         </pre>
@@ -255,6 +269,15 @@ class SignUpDialog extends React.Component {
             "250ml          " + nf.format(this.state.am250.taroL * 18000)}
         </pre>
         <pre>{this.state.am250.taroL != 0 && <br />}</pre>
+          <pre>
+            {this.state.am500.taroL != 0 &&
+              this.state.am500.taroL + "x  Taro Latte"}
+          </pre>
+          <pre>
+            {this.state.am500.taroL != 0 &&
+              "500ml          " + nf.format(this.state.am500.taroL * 18000)}
+          </pre>
+          <pre>{this.state.am500.taroL != 0 && <br />}</pre>
         <pre>
           {this.state.am250.rum != 0 && this.state.am250.rum + "x  Rum Coffee"}
         </pre>
@@ -263,7 +286,15 @@ class SignUpDialog extends React.Component {
             "250ml          " + nf.format(this.state.am250.rum * 18000)}
         </pre>
         <pre>{this.state.am250.rum != 0 && <br />}</pre>
-        <pre>
+          <pre>
+            {this.state.am500.rum != 0 && this.state.am500.rum + "x  Rum Coffee"}
+          </pre>
+          <pre>
+            {this.state.am500.rum != 0 &&
+              "500ml          " + nf.format(this.state.am500.rum * 18000)}
+          </pre>
+          <pre>{this.state.am500.rum != 0 && <br />}</pre>
+          <pre>
           {this.state.am250.dolce != 0 &&
             this.state.am250.dolce + "x  Dolce Coffee"}
         </pre>
@@ -273,6 +304,16 @@ class SignUpDialog extends React.Component {
         </pre>
         <pre>{this.state.am250.dolce != 0 && <br />}</pre>
         <pre>
+          <pre>
+          {this.state.am500.dolce != 0 &&
+            this.state.am500.dolce + "x  Dolce Coffee"}
+        </pre>
+        <pre>
+          {this.state.am500.dolce != 0 &&
+            "500ml          " + nf.format(this.state.am500.dolce * 18000)}
+        </pre>
+        <pre>{this.state.am500.dolce != 0 && <br />}</pre>
+        <pre>
           {this.state.am250.mocha != 0 &&
             this.state.am250.mocha + "x  Mochacino"}
         </pre>
@@ -281,6 +322,15 @@ class SignUpDialog extends React.Component {
             "250ml          " + nf.format(this.state.am250.mocha * 18000)}
         </pre>
         <pre>{this.state.am250.mocha != 0 && <br />}</pre>
+          <pre>
+            {this.state.am500.mocha != 0 &&
+              this.state.am500.mocha + "x  Mochacino"}
+          </pre>
+          <pre>
+            {this.state.am500.mocha != 0 &&
+              "500ml          " + nf.format(this.state.am500.mocha * 18000)}
+          </pre>
+          <pre>{this.state.am500.mocha != 0 && <br />}</pre>
         <pre>
           {this.state.am250.matcha != 0 &&
             this.state.am250.matcha + "x  Creamy Matcha"}
@@ -290,6 +340,15 @@ class SignUpDialog extends React.Component {
             "250ml          " + nf.format(this.state.am250.matcha * 18000)}
         </pre>
         <pre>{this.state.am250.matcha != 0 && <br />}</pre>
+          <pre>
+            {this.state.am500.matcha != 0 &&
+              this.state.am500.matcha + "x  Creamy Matcha"}
+          </pre>
+          <pre>
+            {this.state.am500.matcha != 0 &&
+              "500ml          " + nf.format(this.state.am500.matcha * 18000)}
+          </pre>
+          <pre>{this.state.am500.matcha != 0 && <br />}</pre>
         <pre>
           {this.state.am250.taro != 0 &&
             this.state.am250.taro + "x  Taro Frappé"}
@@ -299,6 +358,15 @@ class SignUpDialog extends React.Component {
             "250ml          " + nf.format(this.state.am250.taro * 18000)}
         </pre>
         <pre>{this.state.am250.taro != 0 && <br />}</pre>
+          <pre>
+            {this.state.am500.taro != 0 &&
+              this.state.am500.taro + "x  Taro Frappé"}
+          </pre>
+          <pre>
+            {this.state.am500.taro != 0 &&
+              "500ml          " + nf.format(this.state.am500.taro * 18000)}
+          </pre>
+          <pre>{this.state.am500.taro != 0 && <br />}</pre>
         <pre>
           {this.state.am250.choco != 0 &&
             this.state.am250.choco + "x  Choco Signature"}
@@ -308,30 +376,59 @@ class SignUpDialog extends React.Component {
             "250ml          " + nf.format(this.state.am250.choco * 18000)}
         </pre>
         <pre>{this.state.am250.choco != 0 && <br />}</pre>
+          <pre>
+            {this.state.am500.choco != 0 &&
+              this.state.am500.choco + "x  Choco Signature"}
+          </pre>
+          <pre>
+            {this.state.am500.choco != 0 &&
+              "500ml          " + nf.format(this.state.am500.choco * 18000)}
+          </pre>
+          <pre>{this.state.am500.choco != 0 && <br />}</pre>
         <pre>
           {this.state.am250.milktea != 0 &&
             this.state.am250.milktea + "x  Brown Sugar Milktea"}
         </pre>
         <pre>
           {this.state.am250.milktea != 0 &&
-            "250ml           18.000" +
+            "250ml           " +
               nf.format(this.state.am250.milktea * 18000)}
         </pre>
         <pre>{this.state.am250.milktea != 0 && <br />}</pre>
+          <pre>
+            {this.state.am500.milktea != 0 &&
+              this.state.am500.milktea + "x  Brown Sugar Milktea"}
+          </pre>
+          <pre>
+            {this.state.am500.milktea != 0 &&
+              "500ml           " +
+                nf.format(this.state.am500.milktea * 18000)}
+          </pre>
+          <pre>{this.state.am500.milktea != 0 && <br />}</pre>
         <pre>
           {this.state.am250.mango != 0 &&
             this.state.am250.mango + "x  Mango Tea"}
         </pre>
         <pre>
           {this.state.am250.mango != 0 &&
-            "250ml           18.000" +
-              nf.format(this.state.am250.mango * 18000)}
+            "250ml           " +
+              nf.format(this.state.am250.mango * 12000)}
         </pre>
         <pre>{this.state.am250.mango != 0 && <br />}</pre>
-        <pre>
-          {this.state != 0 && "TOTAL	       " + nf.format(this.state.price)}
-        </pre>
-      </div>,
+          <pre>
+            {this.state.am500.mango != 0 &&
+              this.state.am500.mango + "x  Mango Tea"}
+          </pre>
+          <pre>
+            {this.state.am500.mango != 0 &&
+              "500ml           " +
+                nf.format(this.state.am500.mango * 20000)}
+          </pre>
+          <pre>{this.state.am500.mango != 0 && <br />}</pre>
+          <pre>{this.state.discount != 0 && "DISCOUNT       " + nf.format(this.state.discount)}</pre>
+        <pre>{this.state != 0 && "TOTAL	         " + nf.format(this.state.price)}</pre>
+      </pre></div>,
+
       <svg
         viewBox="0 0 200 200"
         className="blob"
@@ -339,8 +436,8 @@ class SignUpDialog extends React.Component {
       >
         <path
           className="path"
-          fill="#FF0066"
-          d="M36.3,-52.6C45.5,-43.3,50.3,-30.6,56.7,-17C63.1,-3.4,71,11.1,69.8,25C68.5,38.9,58,52.1,44.8,56.4C31.6,60.6,15.8,56,2.1,53.1C-11.6,50.1,-23.1,48.9,-37.2,44.9C-51.2,40.9,-67.8,34.2,-73.9,22.4C-80.1,10.5,-75.7,-6.3,-69.8,-22C-63.8,-37.7,-56.1,-52.2,-44.2,-60.7C-32.3,-69.1,-16.2,-71.5,-1.3,-69.7C13.5,-67.9,27.1,-61.9,36.3,-52.6Z"
+          fill="#fF0066"
+          d="m36.3,-52.6C45.5,-43.3,50.3,-30.6,56.7,-17C63.1,-3.4,71,11.1,69.8,25C68.5,38.9,58,52.1,44.8,56.4C31.6,60.6,15.8,56,2.1,53.1C-11.6,50.1,-23.1,48.9,-37.2,44.9C-51.2,40.9,-67.8,34.2,-73.9,22.4C-80.1,10.5,-75.7,-6.3,-69.8,-22C-63.8,-37.7,-56.1,-52.2,-44.2,-60.7C-32.3,-69.1,-16.2,-71.5,-1.3,-69.7C13.5,-67.9,27.1,-61.9,36.3,-52.6Z"
           transform="translate(100 100)"
         />
       </svg>,
@@ -349,9 +446,9 @@ class SignUpDialog extends React.Component {
 
   // this is the function to calculate all of the prices
   calculateR(e){
-    let tmpPrice = this.state.am250.americano * data250ml[0].price + this.state.am250.aren * data250ml[0].price + this.state.am250.vanilla * data250ml[0].price + this.state.am250.pandan * data250ml[0].price + this.state.am250.taroL * data250ml[0].price + this.state.am250.rum * data250ml[0].price + this.state.am250.dolce * data250ml[0].price + this.state.am250.mocha * data250ml[0].price + this.state.am250.matcha * data250ml[0].price + this.state.am250.cookie * data250ml[0].price + this.state.am250.taro * data250ml[0].price + this.state.am250.choco * data250ml[0].price + this.state.am250.milktea * data250ml[0].price + this.state.am250.mango * data250ml[12].price + this.state.am500.americano * data500ml[0].price + this.state.am500.aren * data500ml[0].price + this.state.am500.vanilla * data500ml[0].price + this.state.am500.pandan * data500ml[0].price + this.state.am500.taroL * data500ml[0].price + this.state.am500.rum * data500ml[0].price + this.state.am500.dolce * data500ml[0].price + this.state.am500.mocha * data500ml[0].price + this.state.am500.matcha * data500ml[0].price + this.state.am500.cookie * data500ml[0].price + this.state.am500.taro * data500ml[0].price + this.state.am500.choco * data500ml[0].price + this.state.am500.milktea * data500ml[0].price + this.state.am500.mango * data500ml[12].price - this.state.am250.discount;
+    let tmpPrice = this.state.am250.americano * data250ml[0].price + this.state.am250.aren * data250ml[0].price + this.state.am250.vanilla * data250ml[0].price + this.state.am250.pandan * data250ml[0].price + this.state.am250.taroL * data250ml[0].price + this.state.am250.rum * data250ml[0].price + this.state.am250.dolce * data250ml[0].price + this.state.am250.mocha * data250ml[0].price + this.state.am250.matcha * data250ml[0].price + this.state.am250.cookie * data250ml[0].price + this.state.am250.taro * data250ml[0].price + this.state.am250.choco * data250ml[0].price + this.state.am250.milktea * data250ml[0].price + this.state.am250.mango * data250ml[12].price + this.state.am500.americano * data500ml[0].price + this.state.am500.aren * data500ml[0].price + this.state.am500.vanilla * data500ml[0].price + this.state.am500.pandan * data500ml[0].price + this.state.am500.taroL * data500ml[0].price + this.state.am500.rum * data500ml[0].price + this.state.am500.dolce * data500ml[0].price + this.state.am500.mocha * data500ml[0].price + this.state.am500.matcha * data500ml[0].price + this.state.am500.cookie * data500ml[0].price + this.state.am500.taro * data500ml[0].price + this.state.am500.choco * data500ml[0].price + this.state.am500.milktea * data500ml[0].price + this.state.am500.mango * data500ml[12].price - this.state.discount;
     this.setState({price: tmpPrice});
-    
+
     console.log(data500ml[12].price)
     console.log(this.state.price)
   }
@@ -385,10 +482,11 @@ class SignUpDialog extends React.Component {
         await this.setState({am250: {...this.state.am250, choco: e.target.value } });
       } else if (e.target.id == "Brown Sugar MT") {
         await this.setState({am250: {...this.state.am250, milktea: e.target.value } });
-      } else if (e.target.id == "Mango Tea") {
+      } else if (e.target.id == "Mango tea") {
         await this.setState({am250: {...this.state.am250, mango: e.target.value } });
-      } else if (e.target.id == 'Discount') {
+      } else if (e.target.id == 'discount') {
         await this.setState({discount: e.target.value})
+        console.log(this.state.discount - 1)
       }
 
       if (e.target.id == "Americano500ml") {
@@ -413,16 +511,16 @@ class SignUpDialog extends React.Component {
         await this.setState({am500: {...this.state.am500, cookie: e.target.value} })
       } else if (e.target.id == "Taro Frappé500ml") {
         await this.setState({am500: {...this.state.am500, taro: e.target.value} })
-      } else if (e.target.id == "Choco Signature500ml") {
+      } else if (e.target.id == "choco signature500ml") {
         await this.setState({am500: {...this.state.am500, choco: e.target.value} })
       } else if (e.target.id == "Brown Sugar MT500ml") {
         await this.setState({am500: {...this.state.am500, milktea: e.target.value} })
-      } else if (e.target.id == "Mango Tea500ml") {
+      } else if (e.target.id == "Mango tea500ml") {
         await this.setState({am500: {...this.state.am500, mango: e.target.value} })
       }
       this.calculate()
     } else {
-      var alertDialogue = ['Woi!! Mana ada customer yg mau -1, mau rugi kau?', 'Cie yg mau ngasih duit gratis', 'Anda terlalu percaya diri', 'Jualan yang bener...', 'Seriously? -_-']
+      var alertDialogue = ['woi!! mana ada customer yg mau -1, mau rugi kau?', 'cie yg mau ngasih duit gratis', 'anda terlalu percaya diri', 'jualan yang bener...', 'seriously? -_-']
       alert(alertDialogue[Math.floor((Math.random() * 5))]);
       e.target.value = "";
     }
@@ -430,4 +528,4 @@ class SignUpDialog extends React.Component {
   }
 }
 
-export default SignUpDialog;
+export default signUpDialog;
