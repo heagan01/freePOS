@@ -41,11 +41,11 @@ let price = 0
 var nf = new Intl.NumberFormat();
 
 const data250ml = [
-  { color: "brown", name: "Americano", id: "americano", price: 18000 },
-    { color: "grey", name: "Cookies n Cream", id: "cookie", price: 18000 },
-  { color: "brown", name: "Aren Latte", id: "aren", price: 18000 },
-  { color: "green", name: "Pandan Latte", id: "pandan", price: 18000 },
-  { color: "purple", name: "Taro Latte", id: "taro", price: 18000 },
+  { color: "brown", name: "Americano", id: "americano", price: 18000, array: 'this.state.am250.americano'},
+    { color: "grey", name: "Cookies n Cream", id: "cookie", price: 18000, array: 'this.state.am250.cookie' },
+  { color: "brown", name: "Aren Latte", id: "aren", price: 18000, array: 'this.state.am250.aren' },
+  { color: "green", name: "Pandan Latte", id: "pandan", price: 18000, array: 'this.state.am250.pandan' },
+  { color: "purple", name: "Taro Latte", id: "taro", price: 18000,  },
   { color: "brown", name: "Rum Coffee", id: "rum", price: 18000 },
   { color: "brown", name: "Dolce Coffee", id: "dolce", price: 18000 },
   { color: "brown", name: "Mochacino", id: "mocha", price: 18000 },
@@ -71,6 +71,10 @@ const data500ml = [
   { color: "brown", name: "Brown Sugar MT", id: "milktea", price: 35000 },
   { color: "yellow", name: "Mango tea", id: "mango", price: 20000},
 ]
+
+function Preview(props) {
+  return {props.array != 0 && props.name}
+}
 
 function Item(props) {
   return (
@@ -238,8 +242,8 @@ class signUpDialog extends React.Component {
         <pre>{this.state.am250.vanilla != 0 && <br />}</pre>
         <pre>{this.state.am500.vanilla != 0 &&
           "500ml          " + nf.format(this.state.am500.vanilla * 35000)}
-      </pre>
-      {this.state.am500.vanilla != 0 && <br />}
+        </pre>
+        {this.state.am500.vanilla != 0 && <br />}
         <pre>
           {this.state.am250.pandan != 0 &&
             this.state.am250.pandan + "x  Pandan Latte"}
@@ -432,7 +436,7 @@ class signUpDialog extends React.Component {
   }
 
   // this is the function to calculate all of the prices
-  calculateR(e){
+  calculateR(e) {
     let tmpPrice = this.state.am250.americano * data250ml[0].price + this.state.am250.aren * data250ml[0].price + this.state.am250.vanilla * data250ml[0].price + this.state.am250.pandan * data250ml[0].price + this.state.am250.taroL * data250ml[0].price + this.state.am250.rum * data250ml[0].price + this.state.am250.dolce * data250ml[0].price + this.state.am250.mocha * data250ml[0].price + this.state.am250.matcha * data250ml[0].price + this.state.am250.cookie * data250ml[0].price + this.state.am250.taro * data250ml[0].price + this.state.am250.choco * data250ml[0].price + this.state.am250.milktea * data250ml[0].price + this.state.am250.mango * data250ml[12].price + this.state.am500.americano * data500ml[0].price + this.state.am500.aren * data500ml[0].price + this.state.am500.vanilla * data500ml[0].price + this.state.am500.pandan * data500ml[0].price + this.state.am500.taroL * data500ml[0].price + this.state.am500.rum * data500ml[0].price + this.state.am500.dolce * data500ml[0].price + this.state.am500.mocha * data500ml[0].price + this.state.am500.matcha * data500ml[0].price + this.state.am500.cookie * data500ml[0].price + this.state.am500.taro * data500ml[0].price + this.state.am500.choco * data500ml[0].price + this.state.am500.milktea * data500ml[0].price + this.state.am500.mango * data500ml[12].price - this.state.discount;
     this.setState({price: tmpPrice});
 
