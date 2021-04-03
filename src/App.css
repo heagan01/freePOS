@@ -1,12 +1,19 @@
 body {
   margin: 0;
   height: 100%;
-  background-image: url('background.jpg')
+}
+
+#bg {
+  height: 140%;
+  width: 100%;
+  position: absolute;
+  background-image: url('background.jpg');
+  /* filter: blur(8px); */
 }
 
 .separator {
   height: 95vh;
-  position: absolute;
+  position: fixed;
   width: 1vh;
   margin-left: 33%;
   margin-top: 10px;
@@ -72,7 +79,7 @@ body {
 .products {
   height: 100vh;
   width: 60%;
-  font-family: 'Arial-rounded', sans-serif;
+  font-family: 'Varela Round', sans-serif;
   float: right;
 }
 

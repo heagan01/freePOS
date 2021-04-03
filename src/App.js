@@ -41,11 +41,11 @@ let price = 0
 var nf = new Intl.NumberFormat();
 
 const data250ml = [
-  { color: "brown", name: "Americano", id: "americano", price: 18000, array: 'this.state.am250.americano'},
-    { color: "grey", name: "Cookies n Cream", id: "cookie", price: 18000, array: 'this.state.am250.cookie' },
-  { color: "brown", name: "Aren Latte", id: "aren", price: 18000, array: 'this.state.am250.aren' },
-  { color: "green", name: "Pandan Latte", id: "pandan", price: 18000, array: 'this.state.am250.pandan' },
-  { color: "purple", name: "Taro Latte", id: "taro", price: 18000,  },
+  { color: "brown", name: "Americano", id: "americano", price: 18000 },
+  { color: "grey", name: "Cookies n Cream", id: "cookie", price: 18000 },
+  { color: "brown", name: "Aren Latte", id: "aren", price: 18000 },
+  { color: "green", name: "Pandan Latte", id: "pandan", price: 18000 },
+  { color: "purple", name: "Taro Latte", id: "taro", price: 18000 },
   { color: "brown", name: "Rum Coffee", id: "rum", price: 18000 },
   { color: "brown", name: "Dolce Coffee", id: "dolce", price: 18000 },
   { color: "brown", name: "Mochacino", id: "mocha", price: 18000 },
@@ -58,7 +58,7 @@ const data250ml = [
 
 const data500ml = [
   { color: "brown", name: "Americano", id: "americano", price: 35000 },
-    { color: "grey", name: "Cookies n Cream", id: "cookie", price: 35000 },
+  { color: "grey", name: "Cookies n Cream", id: "cookie", price: 35000 },
   { color: "brown", name: "Aren Latte", id: "aren", price: 35000 },
   { color: "green", name: "Pandan Latte", id: "pandan", price: 35000 },
   { color: "purple", name: "Taro Latte", id: "taro", price: 35000 },
@@ -72,10 +72,41 @@ const data500ml = [
   { color: "yellow", name: "Mango tea", id: "mango", price: 20000},
 ]
 
-function Preview(props) {
-  return {props.array != 0 && props.name}
+const getName = (id, type) => {
+    //console.log(id);
+    if (type == 250) {
+      let drink = 0;
+      if((data250ml.filter(item => item.id == id)).length > 0){
+        drink = data250ml.filter(item => item.id == id)[0].name;
+      }
+      return drink;
+    } 
+    else{
+      let drink = 0;
+      if((data500ml.filter(item => item.id == id)).length > 0){
+        drink = data500ml.filter(item => item.id == id)[0].name;
+      }
+      return drink;
+    } 
+    
+  }
+
+const getPrice = (id, qty, type) => {
+  if (type == 250) {
+    return (nf.format(qty * data250ml.filter(item => item.id == id)[0].price));
+  } else {
+    let strPrice = 0;
+    if((data500ml.filter(item => item.id == id)).length > 0){
+      strPrice = data500ml.filter(item => item.id == id)[0].price;
+    }
+    return (nf.format(qty * strPrice));
+  }
 }
 
+function Preview(props) {
+  return ('Preview - ' + props.data != 0 && props.name);
+}
+  
 function Item(props) {
   return (
     <div
@@ -173,8 +204,47 @@ class signUpDialog extends React.Component {
         <pre>     Selera Ngopi</pre>
         ----------------------
         <br />
+        {
+          // data250ml.map((item)=>{
+          //   return this.state.am250.americano;
+          // })
+          
+          Object.keys(this.state.am250).map(item=>{
+            if(this.state.am250[item] > 0) {
+              //console.log(getName(item))
+              return (
+                <>
+                  <pre>{this.state.am250[item]}x  {getName(item, 250)}</pre>
+                  <pre>250ml          {getPrice(item, this.state.am250[item], 250)}</pre>
+                </>
+              )
+              // return <pre>{this.state.am250[item]}x {item.name}</pre>;
+            }
+          })
+
+        }
+
+        {
+          // data250ml.map((item)=>{
+          //   return this.state.am250.americano;
+          // })
+          
+          Object.keys(this.state.am500).map(item=>{
+            if(this.state.am500[item] > 0) {
+              //console.log(getName(item))
+              return (
+                <>
+                  <pre>{this.state.am500[item]}x  {getName(item, 500)}</pre>
+                  <pre>500ml          {getPrice(item, this.state.am500[item], 500)}</pre>
+                </>
+              )
+              // return <pre>{this.state.am250[item]}x {item.name}</pre>;
+            }
+          })
+
+        }
         {/* this too is the most unefficient code I've ever written */}
-        <pre>
+        {/* <pre>
           {this.state.am250.americano != 0 &&
             this.state.am250.americano + "x  Americano"}
         </pre>
@@ -429,9 +499,10 @@ class signUpDialog extends React.Component {
                 nf.format(this.state.am500.mango * 20000)}
           </pre>
           <pre>{this.state.am500.mango != 0 && <br />}</pre>
+          */}
           <pre>{this.state.discount != 0 && "DISCOUNT       " + nf.format(this.state.discount)}</pre>
         <pre>{this.state != 0 && "TOTAL	       " + nf.format(this.state.price)}</pre>
-      </pre></div>,
+      </div>,
     ];
   }
 
