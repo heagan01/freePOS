@@ -59,7 +59,7 @@ const getName = (id, type) => {
 const getPrice = (id, qty, type) => {
   if (type == 250) {
     if (data250ml.filter((item) => item.id == id).length > 0) {
-      return nf.format(
+      return( 
         qty * data250ml.filter((item) => item.id == id)[0].price
       );
     }
@@ -68,7 +68,9 @@ const getPrice = (id, qty, type) => {
     if (data500ml.filter((item) => item.id == id).length > 0) {
       strPrice = data500ml.filter((item) => item.id == id)[0].price;
     }
-    return nf.format(qty * strPrice);
+    
+    return (qty * strPrice);
+  
   }
 };
 
@@ -107,8 +109,10 @@ function Item(props) {
 
 class signUpDialog extends React.Component {
   constructor(eprops) {
-    super(eprops);
+    super(eprops);    
+    this.previewRef = React.createRef();
     this.calculate = this.calculateR.bind(this);
+    this.viewToggle = this.viewToggleR.bind(this);
     this.price = 0;
     // this may be the most inefficient code I've ever written
     this.addItem = this.addItem.bind(this);
@@ -149,13 +153,15 @@ class signUpDialog extends React.Component {
       },
       discount: 0,
       price: 0,
+      view: 0,
     };
   }
 
   render() {
     return [
-      <div className="separator"></div>,
-      <div className="products">
+      <div className={this.state.view == 0?"separator":"hidden"}></div>,
+      <div className={this.state.view == 0?"products":"full"}>
+        <button onClick={this.viewToggle} className='myButton'>Change View</button>
         <div className="gray item">
           <h1>discount</h1>
           <input
@@ -176,7 +182,7 @@ class signUpDialog extends React.Component {
           />
         ))}
       </div>,
-      <div className="preview">
+      <div className={this.state.view == 0?"preview":"hidden"}>
         ----------------------
         <br />
         <pre> Selera Ngopi</pre>
@@ -196,7 +202,7 @@ class signUpDialog extends React.Component {
                   <pre>
                     {this.state.am250[item]}x {getName(item, 250)}
                   </pre>
-                  <pre>250ml         {getPrice(item, this.state.am250[item], 250)}</pre>
+                  <pre>250ml         {nf.format(getPrice(item, this.state.am250[item], 250 ))}</pre>
                 </>
               );
               // return <pre>{this.state.am250[item]}x {item.name}</pre>;
@@ -216,7 +222,7 @@ class signUpDialog extends React.Component {
                   <pre>
                     {this.state.am500[item]}x {getName(item, 500)}
                   </pre>
-                  <pre>500ml {getPrice(item, this.state.am500[item], 500)}</pre>
+                  <pre>500ml         {nf.format(getPrice(item, this.state.am500[item], 500))}</pre>
                 </>
               );
               // return <pre>{this.state.am250[item]}x {item.name}</pre>;
@@ -234,42 +240,33 @@ class signUpDialog extends React.Component {
     ];
   }
 
+  viewToggleR(e) {
+    // 0 means default
+    if (this.state.view == 0) {
+      this.setState({ view: 1 })
+    } else {
+      this.setState({ view: 0 })
+    }
+  }
   // this is the function to calculate all of the prices
   calculateR(e) {
-    let tmpPrice =
-      this.state.am250.americano * data250ml[0].price +
-      this.state.am250.aren * data250ml[0].price +
-      this.state.am250.vanilla * data250ml[0].price +
-      this.state.am250.pandan * data250ml[0].price +
-      this.state.am250.taroL * data250ml[0].price +
-      this.state.am250.rum * data250ml[0].price +
-      this.state.am250.dolce * data250ml[0].price +
-      this.state.am250.mocha * data250ml[0].price +
-      this.state.am250.matcha * data250ml[0].price +
-      this.state.am250.cookie * data250ml[0].price +
-      this.state.am250.taro * data250ml[0].price +
-      this.state.am250.choco * data250ml[0].price +
-      this.state.am250.milktea * data250ml[0].price +
-      this.state.am250.mango * data250ml[12].price +
-      this.state.am500.americano * data500ml[0].price +
-      this.state.am500.aren * data500ml[0].price +
-      this.state.am500.vanilla * data500ml[0].price +
-      this.state.am500.pandan * data500ml[0].price +
-      this.state.am500.taroL * data500ml[0].price +
-      this.state.am500.rum * data500ml[0].price +
-      this.state.am500.dolce * data500ml[0].price +
-      this.state.am500.mocha * data500ml[0].price +
-      this.state.am500.matcha * data500ml[0].price +
-      this.state.am500.cookie * data500ml[0].price +
-      this.state.am500.taro * data500ml[0].price +
-      this.state.am500.choco * data500ml[0].price +
-      this.state.am500.milktea * data500ml[0].price +
-      this.state.am500.mango * data500ml[12].price -
-      this.state.discount;
-    this.setState({ price: tmpPrice });
+    let tmpPrice = 0
+    
+    Object.keys(this.state.am250).map((item) => {
+      if (this.state.am250[item] > 0) {
+        tmpPrice += getPrice(item, this.state.am250[item], 250 )
+      }
+    })
 
-    console.log(data500ml[12].price);
-    console.log(this.state.price);
+    Object.keys(this.state.am500).map((item) => {
+      if (this.state.am500[item] > 0) {
+        tmpPrice += getPrice(item, this.state.am500[item], 500 )
+      }
+    })
+    
+    tmpPrice -= this.state.discount
+
+    this.setState({ price: tmpPrice });
   }
 
   // new code
