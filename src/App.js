@@ -1,6 +1,7 @@
 import React from "react";
 import "./App.css";
 
+let width = 0
 let price = 0;
 var nf = new Intl.NumberFormat();
 
@@ -161,7 +162,6 @@ class signUpDialog extends React.Component {
     return [
       <div className={this.state.view == 0?"separator":"hidden"}></div>,
       <div className={this.state.view == 0?"products":"full"}>
-        <button onClick={this.viewToggle} className='myButton'>Change View</button>
         <div className="gray item">
           <h1>discount</h1>
           <input
@@ -240,6 +240,24 @@ class signUpDialog extends React.Component {
     ];
   }
 
+  updateDimensions = () => {
+    width = window.innerWidth;
+    console.log(width);
+    if (width > 1000) {
+      console.log('Hello!')
+      this.setState({ view: 0 })
+    } else if (width < 960){
+      this.setState({ view: 1 })
+    }
+  };
+
+  componentDidMount() {
+    window.addEventListener('resize', this.updateDimensions);
+  }
+  componentWillUnmount() {
+    window.removeEventListener('resize', this.updateDimensions);
+  }
+
   viewToggleR(e) {
     // 0 means default
     if (this.state.view == 0) {
@@ -267,6 +285,14 @@ class signUpDialog extends React.Component {
     tmpPrice -= this.state.discount
 
     this.setState({ price: tmpPrice });
+  }
+
+  viewHide() {
+    this.state.view = 1
+  }
+
+  viewShow() {
+    this.state.view = 0    
   }
 
   // new code
